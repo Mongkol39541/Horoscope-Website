@@ -1,0 +1,82 @@
+{% extends "layout.html" %} {% block body %}
+
+<div class="container p-3" id="beauti">
+  <br /><br />
+  <div class="p-3 card border-dark mb-3">
+    <h1 class="card-body text-center">
+      <strong>👑 {{ account['name'] }} อันดับที่ {{unit}}</strong>
+    </h1>
+  </div>
+  <br />
+  <table class="table table-hover text-center">
+    <thead id="supercolor">
+      <tr>
+        <th>
+          <br />
+          <h4><strong>อันดับโชค</strong></h4>
+          <br />
+        </th>
+        <th>
+          <br />
+          <h4><strong>โปรไฟล์</strong></h4>
+          <br />
+        </th>
+        <th>
+          <br />
+          <h4><strong>ชื่อผู้ใช้งาน</strong></h4>
+          <br />
+        </th>
+        <th>
+          <br />
+          <h4><strong>หมายเลขโทรศัพท์</strong></h4>
+          <br />
+        </th>
+        <th>
+          <br />
+          <h4><strong>ทะเบียนรถยนต์</strong></h4>
+          <br />
+        </th>
+        <th>
+          <br />
+          <h4><strong>วันเดือนปีเกิด</strong></h4>
+          <br />
+        </th>
+        <th>
+          <br />
+          <h4><strong>ทะเบียนบ้าน</strong></h4>
+          <br />
+        </th>
+        <th>
+          <br />
+          <h4><strong>ค่าความโชคดีเฉลี่ย</strong></h4>
+          <br />
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item, num in data%}
+      <tr>
+        <td><h4 class="my-2">{{num}}</h4></td>
+        <td>
+          <img
+            src="../static/profile_image/{{item.image}}"
+            alt="/"
+            width="50"
+            height="50"
+            class="rounded d-inline-block align-text-top"
+          />
+        </td>
+        <td><h4 class="my-2">{{item.name}}</h4></td>
+        <td><h4 class="my-2">{{item.phone}}</h4></td>
+        <td><h4 class="my-2">{{item.car}}</h4></td>
+        <td><h4 class="my-2">{{item.date}}</h4></td>
+        <td><h4 class="my-2">{{item.house}}</h4></td>
+        <td><h4 class="my-2">{{item.total_positive}} %</h4></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br /><br />
+</div>
+
+{% endblock %}

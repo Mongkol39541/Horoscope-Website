@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>เลขมงคล</title>
+    <link rel="stylesheet" href="../static/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="../static/dataimage/fire.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+      integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body class="p-3 mb-2">
+    <br /><br />
+    <div class="container my-3 bg-white rounded w-50">
+      <div class="row">
+        <div class="col align-self-center my-3">
+          <br /><br />
+          <h3 class="text-center">ลงทะเบียนสมาชิก</h3>
+          <br />
+          <form action="/addUser" method="post" enctype="multipart/form-data">
+            <div class="form-group my-3">
+              <label for="name">ชื่อผู้ใช้งาน</label>
+              <br /><br />
+              <input
+                type="text"
+                name="name"
+                class="form-control text-center col align-self-center"
+              />
+            </div>
+            <br />
+            <div class="form-group my-3">
+              <label for="password">ตั้งรหัสผ่านของผู้ใช้งาน</label>
+              <br /><br />
+              <input
+                type="text"
+                name="password"
+                class="form-control text-center col align-self-center"
+              />
+            </div>
+            <br />
+            <label for="image">อัพโหลดรูปโปรไฟล์</label>
+            <br /><br />
+            <div class="input-group mb-3">
+              <input
+                type="file"
+                name="image"
+                class="form-control"
+                id="inputGroupFile01"
+              />
+            </div>
+            <br />
+            <p class="text-center">
+              <input
+                type="submit"
+                value="สมัครเข้าใช้งาน"
+                class="btn btn-dark me-3"
+              />
+              <a href="/login" class="btn btn-outline-dark">เข้าสู่ระบบสมาชิก</a>
+            </p>
+          </form>
+          <div class="alert alert-{{color}}" role="alert">{{mes}}</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+{% extends "layout.html" %} {% block body %}
+
+<div class="container p-3">
+  <br />
+  <div class="col my-2">
+    <div class="alert alert-light" role="alert">
+      <input
+        type="hidden"
+        id="positive_result"
+        value="{{ account['positive_resulthouse'] }}"
+        name="positive_result"
+      />
+      <input
+        type="hidden"
+        id="negative_result"
+        value="{{ account['negative_resulthouse'] }}"
+        name="negative_result"
+      />
+      <h2 class="alert-heading">
+        ทำนายโชคชะตาของผู้ใช้ทะเบียนบ้าน {{ account['house'] }} เป็นประจำ
+      </h2>
+      <hr />
+      <h1 class="text-center mb-0">
+        <strong>ผลรวมเลข : {{ account['sumhouse'] }}</strong>
+      </h1>
+      <br />
+      <h4 class="mb-0">{{ account['meshouse'] }}</h4>
+    </div>
+  </div>
+  <div class="col my-2 text-center">
+    <br />
+    <a
+      href="/index/{{id}}"
+      type="button"
+      class="btn btn-outline-light"
+      ><h3>กลับไปหน้าหลัก</h3></a
+    >
+  </div>
+</div>
+
+{% endblock %}

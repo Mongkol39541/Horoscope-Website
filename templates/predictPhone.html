@@ -1,0 +1,51 @@
+{% extends "layout.html" %} {% block body %}
+
+<div class="container p-3">
+  <br />
+  <div class="col my-2">
+    <div class="alert alert-light" role="alert">
+      <input type="hidden" id="positive_result" value="{{ account['positive_resultphone'] }}" name="positive_result" />
+      <input type="hidden" id="negative_result" value="{{ account['negative_resultphone'] }}" name="negative_result" />
+      <h2 class="alert-heading">
+        <strong>ทำนายโชคชะตาของผู้ใช้เบอร์ {{ account['phone'] }} เป็นประจำ</strong>
+      </h2>
+      <hr />
+      <h1 class="text-center mb-0">
+        <strong>ผลรวมเลข : {{ account['sumphone'] }}</strong>
+      </h1>
+      <br />
+      <h4 class="mb-0">{{ account['mesphone'] }}</h4>
+      <br />
+      <div class="row">
+        <div class="col my-2">
+          {% for item in data %}
+          <h4 class="mb-0">
+            🎇 คู่เลข {{item.double_num}} ความหมาย {{item.mean_duo_af}}
+          </h4>
+          <br />
+          {% endfor %}
+        </div>
+        <div class="col my-2">
+          <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+          <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+          <script src="http://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+          <div id="grapdiv" style="width: 100%; height: 400px"></div>
+          <h2 class="text-center my-3">
+            มีค่าความโชคดี {{ account['positive_resultphone'] }} %
+          </h2>
+        </div>
+      </div>
+      {% for category in categories %}
+      <a class="btn" id="beta">{{category}}</a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="col my-2 text-center">
+    <br />
+    <a href="/index/{{id}}" type="button" class="btn btn-outline-light">
+      <h3>กลับไปหน้าหลัก</h3>
+    </a>
+  </div>
+</div>
+
+{% endblock %}

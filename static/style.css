@@ -1,0 +1,89 @@
+body {
+  position: relative;
+  background-image: url("../static/dataimage/digital.jpg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
+#chartdiv_pos {
+  width: 100%;
+  height: 1500px;
+}
+
+#chartdiv_neg {
+  width: 100%;
+  height: 1500px;
+}
+
+#chartdivcategories {
+  width: 100%;
+  height: 800px;
+}
+
+#pricecategories {
+  width: 100%;
+  height: 500px;
+}
+
+#pricedouble {
+  width: 100%;
+  height: 500px;
+}
+
+#beta {
+  background-color: #b3990b;
+  color: rgb(255, 255, 255);
+}
+
+#supercolor{
+  background-color: #009879;
+  color: #fff;
+}
+
+*{
+  font-family: 'Mitr', sans-serif;
+}
+
+table{
+  border-collapse: collapse;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+}
+
+tbody{
+  background-color: rgb(255, 255, 255);
+}
+
+tbody tr:last-of-type{
+  border-bottom: 3px solid #009879;
+}
+
+nav #navtext{
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+nav #navtext::after{
+  content: '';
+  position: absolute;
+  width:10%;
+  opacity: 0;
+  height: 5px;
+  background-image: linear-gradient(to right, #2aba4d, #12a2af);
+  bottom: -10px;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 25px;
+  transition: .4s;
+}
+
+nav #navtext:hover::after{
+  width: 50%;
+  opacity: 1;
+}

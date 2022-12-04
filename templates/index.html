@@ -1,0 +1,162 @@
+{% extends "layout.html" %} {% block body %}
+
+<div class="container p-3">
+  <div class="row row-cols-1 row-cols-md-2 g-4 my-1">
+    <div class="col my-2">
+      <br />
+      <div class="card rounded mx-auto d-block text-center" style="width: 100%">
+        <img
+          src="../static/dataimage/โทรศัพท์.jpg"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="containgr text-dark">
+          <br />
+          <form action="/sendphone/{{id}}" method="post">
+            <div class="row">
+              <label class="col order-first align-self-center"
+                >หมายเลขโทรศัพท์</label
+              >
+              <input
+                type="text"
+                name="numberphone"
+                class="form-control text-center col align-self-center"
+              />
+              <div class="col order-last">
+                <div class="col my-2">
+                  <input
+                    class="btn btn-outline-success"
+                    type="submit"
+                    value="ทำนายผล"
+                  />
+                </div>
+              </div>
+            </div>
+            <label class="col order-first align-self-center text-danger"
+              >ตัวอย่างการกรอกข้อมูล เช่น 0912345678</label
+            >
+          </form>
+          <br />
+        </div>
+      </div>
+    </div>
+
+    <div class="col my-2">
+      <br />
+      <div class="card rounded mx-auto d-block text-center" style="width: 100%">
+        <img
+          src="../static/dataimage/รถยนต์.jpg"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="containgr text-dark">
+          <br />
+          <form action="/sendcar/{{id}}" method="post">
+            <div class="row">
+              <label class="col order-first align-self-center"
+                >ทะเบียนรถยนต์</label
+              >
+              <input
+                type="text"
+                name="numbercar"
+                class="form-control text-center col align-self-center"
+              />
+              <div class="col order-last">
+                <div class="col my-2">
+                  <input
+                    class="btn btn-outline-success"
+                    type="submit"
+                    value="ทำนายผล"
+                  />
+                </div>
+              </div>
+            </div>
+            <label class="col order-first align-self-center text-danger"
+              >ตัวอย่างการกรอกข้อมูล เช่น กข1234</label
+            >
+          </form>
+          <br />
+        </div>
+      </div>
+    </div>
+
+    <div class="col my-2">
+      <br />
+      <div class="card rounded mx-auto d-block text-center" style="width: 100%">
+        <img
+          src="../static/dataimage/date.jpg"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="containgr text-dark">
+          <br />
+          <form action="/senddate/{{id}}" method="post">
+            <div class="row">
+              <label class="col order-first align-self-center">วัน/เดือน</label>
+              <input
+                type="text"
+                name="numberdate"
+                class="form-control text-center col align-self-center"
+              />
+              <div class="col order-last">
+                <div class="col my-2">
+                  <input
+                    class="btn btn-outline-success"
+                    type="submit"
+                    value="ทำนายผล"
+                  />
+                </div>
+              </div>
+            </div>
+            <label class="col order-first align-self-center text-danger"
+              >ตัวอย่างการกรอกข้อมูล เช่น 03/04</label
+            >
+          </form>
+          <br />
+        </div>
+      </div>
+    </div>
+
+    <div class="col my-2">
+      <br />
+      <div class="card rounded mx-auto d-block text-center" style="width: 100%">
+        <img
+          src="../static/dataimage/house.jpg"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="containgr text-dark">
+          <br />
+          <form action="/sendhouse/{{id}}" method="post">
+            <div class="row">
+              <label class="col order-first align-self-center"
+                >ทะเบียนบ้าน</label
+              >
+              <input
+                type="text"
+                name="numberhouse"
+                class="form-control text-center col align-self-center"
+              />
+              <div class="col order-last">
+                <div class="col my-2">
+                  <input
+                    class="btn btn-outline-success"
+                    type="submit"
+                    value="ทำนายผล"
+                  />
+                </div>
+              </div>
+            </div>
+            <label class="col order-first align-self-center text-danger"
+              >ตัวอย่างการกรอกข้อมูล เช่น 123/45</label
+            >
+          </form>
+          <br />
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+</div>
+
+{% endblock %}

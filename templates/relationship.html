@@ -1,0 +1,56 @@
+{% extends "layout.html" %} {% block body %}
+
+<input type="hidden" id="category" value="{{name_category}}" name="category" />
+<input
+  type="hidden"
+  id="counts_category"
+  value="{{num_category}}"
+  name="counts_category"
+/>
+<input
+  type="hidden"
+  id="price_category"
+  value="{{price_category}}"
+  name="price_category"
+/>
+<input type="hidden" id="double" value="{{name_double}}" name="double" />
+<input
+  type="hidden"
+  id="price_double"
+  value="{{price_double}}"
+  name="price_double"
+/>
+
+<script src="//cdn.amcharts.com/lib/4/core.js"></script>
+<script src="//cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="//cdn.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="//cdn.amcharts.com/lib/4/plugins/forceDirected.js"></script>
+
+<div class="p-3" id="chartdiv_pos"></div>
+<div class="p-3" id="chartdiv_neg"></div>
+<div class="container p-3">
+  <div class="alert alert-light" role="alert">
+    <br />
+    <h1 class="text-center mb-0">
+      <strong>กราฟแสดงจำนวนคนต่อลักษณะเบอร์โทรศัพท์ <br> (ข้อมูลอ้างอิงมาจากสหรัฐศอเมริกา)</strong>
+    </h1>
+    <div id="chartdivcategories"></div>
+  </div>
+  <div class="alert alert-light" role="alert">
+    <br />
+    <h1 class="text-center mb-0">
+      <strong>กราฟแสดงราคาเฉลี่ยต่อลักษณะเบอร์โทรศัพท์ <br> (ข้อมูลอ้างอิงมาจากสหรัฐอเมริกา)</strong>
+    </h1>
+    <br />
+    <div id="pricecategories"></div>
+  </div>
+  <div class="alert alert-light" role="alert">
+    <br />
+    <h1 class="text-center mb-0">
+      <strong>กราฟแสดงราคาเฉลี่ยต่อคู่เลขมงคลเบอร์โทรศัพท์ <br> (ข้อมูลอ้างอิงมาจากสหรัฐอเมริกา)</strong>
+    </h1>
+    <br />
+    <div id="pricedouble"></div>
+  </div>
+</div>
+{% endblock %}

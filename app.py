@@ -17,6 +17,8 @@ firebase_admin.initialize_app(cred, {
 })
 database = db.reference('')
 database = database.child('User')
+commentU = db.reference('')
+commentU = commentU.child('Comment')
 app.app_context().push()
 
 @app.route("/")
@@ -95,20 +97,20 @@ def splitdata(data):
 def addUser():
     name = request.form["name"]
     password = request.form["password"]
-    file = request.files["image"]
+    file = request.form["image"]
     if len(name) == 0 or len(password) == 0:
         mes = "กรุณากรอกข้อมูลชื่อผู้ใช้หรือรหัสผ่านให้ครบถ้วน"
         color = "danger"
         return render_template("singup.html", mes=mes, color=color)
-    try:
-        image_file = save_image(file)
-        url_for("static", filename="profile_image/"+image_file)
-    except:
+    if len(file) != 0:
+        imgefile = file
+    else:
         profile = ['astronaut.jpg', 'charizard.jpg', 'pngtree.jpg', 'shiba.jpg', 'ninja.jpg']
-        file.filename = np.random.choice(profile, 1, p=[0.2, 0.2, 0.2, 0.2, 0.2])
+        filename = np.random.choice(profile, 1, p=[0.2, 0.2, 0.2, 0.2, 0.2])
+        imgefile = '../static/profile_image/' + filename[0]
     add_database = database.push()
     add_database.set({
-        'name': name, 'password':password, 'image':file.filename[0], 'phone':'', 'price':'', 'car':'', 
+        'name': name, 'password':password, 'image':imgefile, 'phone':'', 'price':'', 'car':'', 
         'date':'', 'house':'', 'sumphone':'', 'sumhouse':'', 'mesphone':'', 'mescar':'', 'mesday':'', 
         'mesmonth':'', 'meshouse':'', 'double_num':'', 'mean_duo_af':'', 'category':'', 'positive_resultphone':0,
         'negative_resultphone':0, 'positive_resultcar':0, 'negative_resultcar':0, 'total_positive':0})
@@ -125,10 +127,9 @@ def intoUser():
     for item in data:
         if name == data[item]['name'] and password == data[item]['password']:
             return redirect("/index/{0}".format(item))
-        else:
-            mes = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
-            color = "danger"
-            return render_template("login.html", mes=mes, color=color)
+    mes = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
+    color = "danger"
+    return render_template("login.html", mes=mes, color=color)
 
 @app.route("/index/<string:id>")
 def index(id):
@@ -176,10 +177,12 @@ def dataDeveloper(id):
     account = data[id]
     return render_template("dataDeveloper.html", account=account, id=id)
 
-@app.route("/showData/<string:id>")
+@app.route("/showData/<string:id>", methods=['GET' ,'POST'])
 def showData(id):
     data = database.get()
     account = data[id]
+    name = account['name']
+    image = account['image']
     total = (account['positive_resultphone'] + account['positive_resultcar']) / 2
     updata = database.child('{0}'.format(id))
     updata.update({'total_positive':total})
@@ -202,7 +205,19 @@ def showData(id):
                 newdata.append(top)
                 break
         datatop.append(newdata)
-    return render_template("showData.html", account=account, data=datatop, unit=unit, id=id)
+    try:
+        com = request.form["description"]
+        if len(com) != 0:
+            comment = commentU.push()
+            comment.set({'name':name, 'image':image, 'com':com})
+    except:
+        pass
+    comment = commentU.get()
+    sort_com = []
+    for num in comment:
+        sort_com.append(comment[num])
+    comment = sort_com[::-1]
+    return render_template("showData.html", comment=comment, account=account, data=datatop, unit=unit, id=id)
 
 @app.route("/relationship/<string:id>")
 def relationship(id):

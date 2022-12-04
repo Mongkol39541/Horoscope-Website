@@ -59,7 +59,7 @@
         <td><h4 class="my-2">{{num}}</h4></td>
         <td>
           <img
-            src="../static/profile_image/{{item.image}}"
+            src="{{item.image}}"
             alt="/"
             width="50"
             height="50"
@@ -76,6 +76,54 @@
       {% endfor %}
     </tbody>
   </table>
+  <br />
+  <div class="p-3 card border-dark mb-3">
+    <h1 class="card-body">
+      <strong>ข้อคิดเห็นจากผู้ใช้</strong>
+    </h1>
+    <div class="container">
+      <form
+        action="/showData/{{id}}"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <div class="form-group">
+          <textarea
+            name="description"
+            type="description"
+            class="form-control"
+            rows="5"
+          ></textarea>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <input
+            type="submit"
+            value="แสดงความคิดเห็น"
+            class="btn my-2"
+            id="beta"
+          />
+        </div>
+        <br />
+      </form>
+      {% for item in comment%}
+      <br />
+      <div class="row g-0">
+        <div class="col col-md-1">
+          <img
+            src="{{item['image']}}"
+            class="rounded-circle"
+            alt="/"
+            width="80"
+            height="80"
+          />
+        </div>
+        <div class="col col-md-11 border border-dark rounded-pill p-3">
+          <p>{{item['name']}} : {{item['com']}}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
   <br /><br />
 </div>
 

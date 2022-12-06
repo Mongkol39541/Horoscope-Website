@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for
-import os
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -83,12 +82,6 @@ def sendhouse(id):
     except:
         return redirect("/index/{0}".format(id))
 
-def save_image(image_file):
-    image_name = image_file.filename
-    image_path = os.path.join(app.root_path, "static/profile_image", image_name)
-    image_file.save(image_path)
-    return image_name
-
 def splitdata(data):
     data = data[:len(data ) - 1].split(",")
     return data
@@ -102,15 +95,16 @@ def addUser():
         mes = "กรุณากรอกข้อมูลชื่อผู้ใช้หรือรหัสผ่านให้ครบถ้วน"
         color = "danger"
         return render_template("singup.html", mes=mes, color=color)
-    if len(file) != 0:
+    try:
         imgefile = file
-    else:
-        profile = ['astronaut.jpg', 'charizard.jpg', 'pngtree.jpg', 'shiba.jpg', 'ninja.jpg']
-        filename = np.random.choice(profile, 1, p=[0.2, 0.2, 0.2, 0.2, 0.2])
+        url_for(imgefile)
+    except:
+        profile = ['astronaut.jpg', 'charizard.jpg', 'pngtree.jpg', 'shiba.jpg', 'ninja.jpg', 'lufy.jpg', 'pan.jpg', 'pika.jpg', 'tttttt.jpg', 'pikaju.jpg']
+        filename = np.random.choice(profile, 1, p=[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1])
         imgefile = '../static/profile_image/' + filename[0]
     add_database = database.push()
     add_database.set({
-        'name': name, 'password':password, 'image':imgefile, 'phone':'', 'price':'', 'car':'', 
+        'name': name, 'password':password, 'image':imgefile, 'phone':'', 'car':'', 
         'date':'', 'house':'', 'sumphone':'', 'sumhouse':'', 'mesphone':'', 'mescar':'', 'mesday':'', 
         'mesmonth':'', 'meshouse':'', 'double_num':'', 'mean_duo_af':'', 'category':'', 'positive_resultphone':0,
         'negative_resultphone':0, 'positive_resultcar':0, 'negative_resultcar':0, 'total_positive':0})

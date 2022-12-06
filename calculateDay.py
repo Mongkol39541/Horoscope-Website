@@ -15,4 +15,3 @@ class calculateday:
                 mean_day = str(int(number_day)) + " : " + df_day["Mean"][int(number_day) - 1]
                 mean_month = str(int(number_month)) + " : " + df_month["Mean"][int(number_month) - 1]
             return mean_day, mean_month
-print(pd.__version__)

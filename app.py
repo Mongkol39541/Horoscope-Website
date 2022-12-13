@@ -20,11 +20,11 @@ commentU = db.reference('')
 commentU = commentU.child('Comment')
 app.app_context().push()
 
-@app.route("/singup")
+@app.route("/")
 def singup():
     return render_template("singup.html", mes="", color="light")
 
-@app.route("/")
+@app.route("/login")
 def login():
     return render_template("login.html", mes="", color="light")
 

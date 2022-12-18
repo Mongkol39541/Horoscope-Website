@@ -8,6 +8,7 @@ from calculateHouse import calculatehouse
 from calculatePhone import phonenumber
 import pandas as pd
 import numpy as np
+import requests
 
 app = Flask(__name__)
 cred = credentials.Certificate("webgoodnumber-firebase-adminsdk-jzi22-8258ba1e45.json")
@@ -95,10 +96,9 @@ def addUser():
         mes = "กรุณากรอกข้อมูลชื่อผู้ใช้หรือรหัสผ่านให้ครบถ้วน"
         color = "danger"
         return render_template("singup.html", mes=mes, color=color)
-    try:
-        imgefile = file
-        url_for(imgefile)
-    except:
+    imgefile = file
+    imgefile_che = requests.get(file)
+    if str(imgefile_che) != '<Response [200]>':
         profile = ['astronaut.jpg', 'charizard.jpg', 'pngtree.jpg', 'shiba.jpg', 'ninja.jpg', 'lufy.jpg', 'pan.jpg', 'pika.jpg', 'tttttt.jpg', 'pikaju.jpg']
         filename = np.random.choice(profile, 1, p=[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1])
         imgefile = '../static/profile_image/' + filename[0]

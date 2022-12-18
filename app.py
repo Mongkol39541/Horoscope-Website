@@ -97,7 +97,13 @@ def addUser():
         color = "danger"
         return render_template("singup.html", mes=mes, color=color)
     imgefile = file
-    imgefile_che = requests.get(file)
+    try:
+        imgefile_che = requests.get(file)
+    except:
+        profile = ['astronaut.jpg', 'charizard.jpg', 'pngtree.jpg', 'shiba.jpg', 'ninja.jpg', 'lufy.jpg', 'pan.jpg', 'pika.jpg', 'tttttt.jpg', 'pikaju.jpg']
+        filename = np.random.choice(profile, 1, p=[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1])
+        imgefile = '../static/profile_image/' + filename[0]
+        imgefile_che = '<Response [200]>'
     if str(imgefile_che) != '<Response [200]>':
         profile = ['astronaut.jpg', 'charizard.jpg', 'pngtree.jpg', 'shiba.jpg', 'ninja.jpg', 'lufy.jpg', 'pan.jpg', 'pika.jpg', 'tttttt.jpg', 'pikaju.jpg']
         filename = np.random.choice(profile, 1, p=[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1])
